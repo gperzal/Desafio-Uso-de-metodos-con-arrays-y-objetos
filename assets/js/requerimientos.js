@@ -40,6 +40,8 @@ document.querySelectorAll(".dropdown-item").forEach((item) => {
 });
 
 
+
+
 // Función para cambiar el contenido de #info basado en el enlace clickeado
 
 function cambiarContenido(requerimiento) {
@@ -51,6 +53,7 @@ function cambiarContenido(requerimiento) {
       console.log(traumatologia);
       // Crear la tabla con los datos de traumatología
       let tablaHtml1 = `
+            <div class="scrollable-table">
             <p>1. Agregar las siguientes horas al arreglo de Traumatología:</p>
             <table class="table table-striped-columns">
               <thead>
@@ -82,11 +85,11 @@ function cambiarContenido(requerimiento) {
       tablaHtml1 += `
               </tbody>
             </table>
-
+            </div>
           `;
 
       // Añadir el botón para agregar horas
-      tablaHtml1 += `<button onclick="agregarHoras()" class="btn btn-primary mb-5">Agregar Horas</button>`;
+      tablaHtml1 += `<button onclick="agregarHoras()" class="btn btn-primary mb-5 mt-2">Agregar Horas</button>`;
       infoDiv.innerHTML = tablaHtml1;
       // Actualizar el contenido de infoDiv
       break;

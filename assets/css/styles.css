@@ -12,7 +12,9 @@ body::before {
 
 html, body {
   height: 100%;
+  min-height: 100vh;
   margin: 0;
+  padding: 0;
 }
 
 #content {
@@ -35,6 +37,8 @@ body::before {
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.3;
+  background-attachment: fixed;
+  
   /* Ajusta este valor para cambiar la transparencia */
   z-index: -1;
   /* Asegura que el fondo esté detrás del contenido */
@@ -97,4 +101,16 @@ nav img {
 
 h1,h2{
   margin-top: 20px;
+}
+
+
+/* Estilo para la tabla o contenedor de la tabla */
+.scrollable-table {
+  overflow-y: auto; /* Habilita el desplazamiento vertical si el contenido es más largo que el contenedor */
+  max-height: 500px; /* Ajusta la altura máxima al valor que prefieras */
+}
+
+table{
+  overflow-y: scroll;
+  
 }
