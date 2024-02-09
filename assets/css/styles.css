@@ -1,0 +1,100 @@
+#mainNavigation a {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)
+}
+
+
+body::before {
+  font-family: 'Lato', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#content {
+  min-height: 100vh; /* Altura de viewport mínimo del 100% */
+  display: flex;
+  flex-direction: column; /* Los elementos hijos se organizan en una columna */
+}
+
+main {
+  flex: 1; /* El contenido principal ocupa todo el espacio disponible */
+}
+
+
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/img/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  /* Ajusta este valor para cambiar la transparencia */
+  z-index: -1;
+  /* Asegura que el fondo esté detrás del contenido */
+}
+
+.dropdown-menu {
+  background: #e8edee
+}
+
+a.dropdown-toggle {
+  color: #5a3737 !important
+}
+
+a.dropdown-item:hover {
+  color: #2745a7 !important
+}
+
+/* Color Letras  */
+.nav-item a {
+  /* color:#dfdfdf; */
+  color: #5a3737;
+}
+
+
+/* Color Letras al pasar el moouse */
+.nav-item a:hover {
+  color: #2745a7;
+  font-weight: solid;
+
+}
+
+.nav-item {
+  min-width: 12vw;
+}
+
+nav img {
+  width: 200px;
+}
+
+
+#myTab{
+  margin-top: 25px;
+}
+
+
+
+#info {
+  margin-top: 50px;
+}
+
+#info p{
+  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+  color: #000; /* Texto oscuro para contraste */
+  font-size: 1.2em; /* Aumenta el tamaño del texto */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra de texto para mejorar la legibilidad */
+  margin: 0.5em 0; /* Añade espacio entre los párrafos */
+  padding: 0.5em; /* Añade espacio dentro de los párrafos */
+}
+
+h1,h2{
+  margin-top: 20px;
+}

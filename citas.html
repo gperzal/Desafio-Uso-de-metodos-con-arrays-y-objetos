@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Médico Dental de Ñuñoa</title>
+    <!-- Bootstraps -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <div id="mainNavigation">
+        <nav role="navigation">
+            <div class="py-3 text-center border-bottom">
+                <img src="./assets/img/logo.png" alt="" class="invert">
+            </div>
+        </nav>
+        <div class="navbar-expand-md nav-underline">
+            <div class="navbar-dark text-center my-2">
+                <button class="navbar-toggler w-75" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span> <span class="align-middle">Menu</span>
+                </button>
+            </div>
+            <div class="text-center mt-3 collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mx-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" id="listas" href="citas.html">Listado Citas</a>
+                    </li>
+                    <li class=" nav-item">
+                        <a class="nav-link" href="historial.html">Historial de Citas</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Requerimientos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">1.- Agregar</a></li>
+                            <li><a class="dropdown-item" href="#">2.- Eliminar</a></li>
+                            <li><a class="dropdown-item" href="#">3.- Listar Dental</a></li>
+                            <li><a class="dropdown-item" href="#">4.- Listar Todo</a></li>
+                            <li><a class="dropdown-item" href="#">5.- Filtar ISAPRE</a></li>
+                            <li><a class="dropdown-item" href="#">6.- Filtar ISAPRE</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <main class="flex-fill">
+        <section class="container text-center">
+            <!-- Navegación de los tabs -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="radiologia-tab" data-toggle="tab" href="#radiologia" role="tab"
+                        aria-controls="radiologia" aria-selected="true">Radiologia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="traumatologia-tab" data-toggle="tab" href="#traumatologia" role="tab"
+                        aria-controls="traumatologia" aria-selected="false">Traumatología</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="dental-tab" data-toggle="tab" href="#dental" role="tab"
+                        aria-controls="dental" aria-selected="false">Dental</a>
+                </li>
+            </ul>
+
+
+            <!-- Contenido de los tabs -->
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="radiologia" role="tabpanel" aria-labelledby="radiologia-tab">
+                    <!-- Tabla de citas de Radiología aquí -->
+                    <h2 class="text-center">Lista Cista Radiologia </h2>
+
+
+
+                    <table class="table table-striped-columns">
+                        <thead>
+                            <tr>
+                                <th class="table-dark">Hora</th>
+                                <th class="table-dark">Especialista</th>
+                                <th class="table-dark">Paciente</th>
+                                <th class="table-dark">RUT</th>
+                                <th class="table-dark">Previsión</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-citas-radiologia">
+                            <!-- Las filas se agregarán aquí mediante JavaScript -->
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="tab-pane fade" id="traumatologia" role="tabpanel" aria-labelledby="traumatologia-tab">
+                    <!-- Tabla de citas de Traumatología  -->
+                    <h2 class="text-center">Lista de Cista Traumatologia </h2>
+                    <table class="table table-striped-columns">
+                        <thead>
+                            <tr>
+                                <th class="table-dark">Hora</th>
+                                <th class="table-dark">Especialista</th>
+                                <th class="table-dark">Paciente</th>
+                                <th class="table-dark">RUT</th>
+                                <th class="table-dark">Previsión</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-citas-traumatologia">
+                            <!-- Las filas se agregarán aquí mediante JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade" id="dental" role="tabpanel" aria-labelledby="dental-tab">
+                    <!-- Tabla de citas de Dental  -->
+                    <h2 class="text-center">Lista Cista Dental </h2>
+                    <table class="table table-striped-columns">
+                        <thead>
+                            <tr>
+                                <th class="table-dark">Hora</th>
+                                <th class="table-dark">Especialista</th>
+                                <th class="table-dark">Paciente</th>
+                                <th class="table-dark">RUT</th>
+                                <th class="table-dark">Previsión</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-citas-dental">
+                            <!-- Las filas se agregarán aquí mediante JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <footer class="footer bg-dark text-white text-center py-3">
+        <div class="container">
+            <div>
+                <a href="https://www.linkedin.com/in/guido-perez-zelaya-3b6a32113/" target="_blank"
+                    class="text-white mx-2">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/gperzal" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-github"></i>
+                </a>
+                <!-- Asumiendo que deseas un enlace a una página de Google general, ya que no proporcionaste un enlace específico -->
+                <a href="https://www.google.com" target="_blank" class="text-white mx-2">
+                    <i class="fab fa-google"></i>
+                </a>
+            </div>
+            <p class="mb-1">Todos los derechos e izquierdos reservados por Guido Perez para Desafio Latam 2024 &copy;
+            </p>
+
+        </div>
+    </footer>
+
+    <script defer src="./assets/js/citas.js"></script>
+
+    <!-- CDN  jQuery y Bootstrap Bundle -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
