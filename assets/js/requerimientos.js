@@ -27,97 +27,185 @@ var dental = [
   { hora: '14:00', especialista: 'RAQUEL VILLASECA', paciente: 'ANA SEPULVEDA', rut: '14441281-0', prevision: 'ISAPRE' },
 ];
 
-// Función para cambiar el contenido de #info basado en el enlace clickeado
-function cambiarContenido(requerimiento) {
-  const infoDiv = document.getElementById("info");
-
-  // Aquí puedes establecer el contenido según el requerimiento
-  switch (requerimiento) {
-    case "Agregar":
-      console.log(traumatologia);
-      // Crear la tabla con los datos de traumatología
-      let tablaHtml = `
-          <p>1. Agregar las siguientes horas al arreglo de Traumatología:</p>
-          <table class="table table-striped-columns">
-            <thead>
-              <tr>
-                <th class="table-dark">Hora</th>
-                <th class="table-dark">Especialista</th>
-                <th class="table-dark">Paciente</th>
-                <th class="table-dark">RUT</th>
-                <th class="table-dark">Previsión</th>
-              </tr>
-            </thead>
-            <tbody id="tabla-citas-traumatologia">
-        `;
-
-      // Agregar filas al HTML de la tabla para cada cita en el arreglo
-      traumatologia.forEach((cita) => {
-        tablaHtml += `
-            <tr class="table-info">
-              <td class="table-secondary">${cita.hora}</td>
-              <td class="table-secondary">${cita.especialista}</td>
-              <td class="table-secondary">${cita.paciente}</td>
-              <td class="table-secondary">${cita.rut}</td>
-              <td class="table-secondary">${cita.prevision}</td>
-            </tr>
-          `;
-      });
-
-      // Cerrar las etiquetas de la tabla
-      tablaHtml += `
-            </tbody>
-          </table>
-        `;
-
-      // Añadir el botón para agregar horas
-      tablaHtml += `
-      <button onclick="agregarHoras()" class="btn btn-primary mb-5">Agregar Horas</button>
-
-        `;
-      // Actualizar el contenido de infoDiv
-
-      // Crea el botón y lo añade al DOM
-      const botonAgregar = document.createElement("button");
-      botonAgregar.textContent = "Agregar Horas";
-      botonAgregar.id = "agregarHorasBtn";
-      infoDiv.appendChild(botonAgregar);
-      botonAgregar.addEventListener("click", agregarHoras);
-      infoDiv.innerHTML = tablaHtml;
-
-      break;
-    case "Eliminar":
-      infoDiv.innerHTML = "<p>Contenido para Eliminar</p>";
-      break;
-    case "Listar Dental":
-      infoDiv.innerHTML = "<p>Contenido para Listar Dental</p>";
-      break;
-    case "Listar Todo":
-      infoDiv.innerHTML = "<p>Contenido para Listar Todo</p>";
-      break;
-    case "Filtar ISAPRE":
-      infoDiv.innerHTML = "<p>Contenido para Filtar ISAPRE</p>";
-      break;
-    case "Filtar FONASA":
-      infoDiv.innerHTML = "<p>Contenido para Filtar FONASA</p>";
-      break;
-
-    default:
-      infoDiv.innerHTML = "<p>Selecciona una opción</p>";
-  }
-}
 
 // Añadir listener a los enlaces para split el contenido
 document.querySelectorAll(".dropdown-item").forEach((item) => {
   item.addEventListener("click", function (e) {
     e.preventDefault(); // Prevenir el comportamiento por defecto del enlace
-    const requerimiento = this.textContent; // Obtener el texto del enlace clickeado
-    let finalWord = getFinalWord(requerimiento);
-    console.log(requerimiento);
-    console.log(finalWord);
-    cambiarContenido(finalWord); // Llamar a la función y cambiar el contenido
+    const requerimientos = this.textContent; // Obtener el texto del enlace clickeado
+    let requerimiento = getFinalWord(requerimientos);
+    console.log("uds selecciono", requerimiento);
+    cambiarContenido(requerimiento); // Llamar a la función y cambiar el contenido
   });
 });
+
+
+// Función para cambiar el contenido de #info basado en el enlace clickeado
+
+function cambiarContenido(requerimiento) {
+  const infoDiv = document.getElementById("info");
+  console.log("uds recibio", requerimiento);
+  // Aquí puedes establecer el contenido según el requerimiento
+  switch (requerimiento) {
+    case "Agregar":
+      console.log(traumatologia);
+      // Crear la tabla con los datos de traumatología
+      let tablaHtml1 = `
+            <p>1. Agregar las siguientes horas al arreglo de Traumatología:</p>
+            <table class="table table-striped-columns">
+              <thead>
+                <tr>
+                  <th class="table-dark">Hora</th>
+                  <th class="table-dark">Especialista</th>
+                  <th class="table-dark">Paciente</th>
+                  <th class="table-dark">RUT</th>
+                  <th class="table-dark">Previsión</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-citas-traumatologia">
+          `;
+
+      // Agregar filas al HTML de la tabla para cada cita en el arreglo
+      traumatologia.forEach((cita) => {
+        tablaHtml1 += `
+              <tr class="table-info">
+                <td class="table-secondary">${cita.hora}</td>
+                <td class="table-secondary">${cita.especialista}</td>
+                <td class="table-secondary">${cita.paciente}</td>
+                <td class="table-secondary">${cita.rut}</td>
+                <td class="table-secondary">${cita.prevision}</td>
+              </tr>
+            `;
+      });
+
+      // Cerrar las etiquetas de la tabla
+      tablaHtml1 += `
+              </tbody>
+            </table>
+
+          `;
+
+      // Añadir el botón para agregar horas
+      tablaHtml1 += `<button onclick="agregarHoras()" class="btn btn-primary mb-5">Agregar Horas</button>`;
+      infoDiv.innerHTML = tablaHtml1;
+      // Actualizar el contenido de infoDiv
+      break;
+    case "Eliminar":
+      let tablaHtml2 = `
+      <p>2. Eliminar el primer y último elemento del arreglo de Radiología:</p>
+      <p>Utilizando Shit y Pop</p>
+      <table class="table table-striped-columns">
+        <thead>
+          <tr>
+            <th class="table-dark">Hora</th>
+            <th class="table-dark">Especialista</th>
+            <th class="table-dark">Paciente</th>
+            <th class="table-dark">RUT</th>
+            <th class="table-dark">Previsión</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-citas-radiologia">
+    `;
+
+      // Agregar filas al HTML de la tabla para cada cita en el arreglo
+      traumatologia.forEach((cita) => {
+        tablaHtml2 += `
+        <tr class="table-info">
+          <td class="table-secondary">${cita.hora}</td>
+          <td class="table-secondary">${cita.especialista}</td>
+          <td class="table-secondary">${cita.paciente}</td>
+          <td class="table-secondary">${cita.rut}</td>
+          <td class="table-secondary">${cita.prevision}</td>
+        </tr>
+      `;
+      });
+
+      // Cerrar las etiquetas de la tabla
+      tablaHtml2 += `
+        </tbody>
+      </table>
+
+    `;
+      // Eliminar  el botón para agregar horas
+
+      tablaHtml2 += `<button onclick="eliminarPrimero()" class="btn btn-primary mb-5">Eliminar Primer Elemento</button>
+                      <button onclick="eliminarUltimo()" class="btn btn-secondary mb-5">Eliminar Ultimo Elemento</button>`;
+      infoDiv.innerHTML = tablaHtml2;
+      // Actualizar el contenido de infoDiv
+
+      break;
+    case "Listar Dental":
+      // Iniciar la variable para construir el HTML
+      let listaHtml1 = `<p>3. Lista de consultas médicas de Dental, separando por un guión:</p>`;
+
+      // Usar map para transformar cada cita en un string con guiones y <br> para separarlas
+      const citasDentalHtml = dental.map(cita => {
+        return `${cita.hora} - ${cita.especialista} - ${cita.paciente} - ${cita.rut} - ${cita.prevision}`;
+      }).join("<br>");
+
+      // Añadir el resultado al HTML
+      listaHtml1 += `<p>${citasDentalHtml}</p>`;
+
+      // Establecer el contenido de infoDiv al HTML construido
+      infoDiv.innerHTML = listaHtml1;
+      break;
+    case "Listar Todo":
+      // Iniciar la variable para construir el HTML
+      let listaHtml2 = `<p>4. Listar todas las citas del centro medico, mostrar solo nombres:</p>`;
+      // Usar map para transformar cada cita en un string con guiones y <br> para separarlas
+      const todasLasCitas = radiologia.concat(traumatologia, dental);
+      const citasHtml = todasLasCitas.map(cita => {
+        return `${cita.paciente}`;
+      }).join("<br>");
+      // Añadir el resultado al HTML
+      listaHtml2 += `<p>${citasHtml}</p>`;
+
+      // Establecer el contenido de infoDiv al HTML construido
+      infoDiv.innerHTML = listaHtml2;
+      break;
+    case "Filtrar ISAPRE":
+      // Filtramos los pacientes que tienen ISAPRE como previsión
+      var pacientesIsapre = dental.filter(function (cita) {
+        return cita.prevision === "ISAPRE";
+      });
+
+      // Iniciar la variable para construir el HTML
+      let filtrarHtml1 = `<p>5. Lista de consultas médicas de Dental con previsión ISAPRE:</p>`;
+
+      // Usar map para transformar cada cita en un string con guiones y <br> para separarlas
+      const citasIsapreHtml = pacientesIsapre.map(cita => {
+        return `${cita.paciente} - ${cita.prevision}`;
+      }).join("<br>");
+
+      // Añadir el resultado al HTML
+      filtrarHtml1 += `<p>${citasIsapreHtml}</p>`;
+
+      // Establecer el contenido de infoDiv al HTML construido
+      infoDiv.innerHTML = filtrarHtml1;
+      break;
+    case "Filtrar FONASA":
+      // Filtramos los pacientes que tienen FONASA como previsión
+      var pacientesFonasa = traumatologia.filter(function (cita) {
+        return cita.prevision === "FONASA";
+      });
+
+      // Iniciar la variable para construir el HTML
+      let filtrarHtml2 = `<p>5. Lista de consultas médicas de Traumatologia con previsión Fonasa:</p>`;
+
+      // Usar map para transformar cada cita en un string con guiones y <br> para separarlas
+      const citasFonasaHtml = pacientesFonasa.map(cita => {
+        return `${cita.paciente} - ${cita.prevision}`;
+      }).join("<br>");
+
+      // Añadir el resultado al HTML
+      filtrarHtml2 += `<p>${citasFonasaHtml}</p>`;
+
+      // Establecer el contenido de infoDiv al HTML construido
+      infoDiv.innerHTML = filtrarHtml2;
+      break;
+  }
+}
+
 
 function getFinalWord(variable) {
   return variable.split(".- ").pop(); // pop obtiene el último elemento del array
@@ -126,7 +214,6 @@ function getFinalWord(variable) {
 // 1. Agregar las siguientes horas al arreglo de Traumatología.
 
 function agregarHoras() {
-  console.log("si se ejecuta");
 
   // Agregar nuevos elementos al arreglo de traumatología de forma correcta
   traumatologia.push(
@@ -136,8 +223,6 @@ function agregarHoras() {
     { hora: "10:30", especialista: "ANTONIO LARENAS", paciente: "PABLO LOAYZA", rut: "13453234-1", prevision: "ISAPRE" },
     { hora: "12:00", especialista: "MATIAS ARAVENA", paciente: "SUSANA POBLETE", rut: "14345656-6", prevision: "FONASA" }
   );
-  console.log("se agregaron las horas");
-  console.log(traumatologia);
 
   // Actualizar la vista
   const tablaCitas = document.getElementById("tabla-citas-traumatologia");
@@ -149,13 +234,63 @@ function agregarHoras() {
   traumatologia.forEach((cita) => {
     const row = tablaCitas.insertRow(-1); // -1 agrega al final de la tabla
     row.innerHTML = `
-      <td class="table-danger">${cita.hora}</td>
-      <td class="table-danger">${cita.especialista}</td>
-      <td class="table-danger">${cita.paciente}</td>
-      <td class="table-danger">${cita.rut}</td>
-      <td class="table-danger">${cita.prevision}</td>
-    `;
+        <td class="table-danger">${cita.hora}</td>
+        <td class="table-danger">${cita.especialista}</td>
+        <td class="table-danger">${cita.paciente}</td>
+        <td class="table-danger">${cita.rut}</td>
+        <td class="table-danger">${cita.prevision}</td>
+      `;
   });
 }
 
-// 1. Agregar las siguientes horas al arreglo de Traumatología.
+// 2. Agregar las siguientes horas al arreglo de Radiologia.
+
+function eliminarPrimero() {
+  radiologia.shift(); // Se utiliza para eliminar el primer dato que tenemos en el arreglo
+
+  // Actualizar la vista
+  const tablaCitas = document.getElementById("tabla-citas-radiologia");
+
+  // Limpiar la tabla antes de volver a llenarla para evitar duplicados
+  tablaCitas.innerHTML = "";
+
+  // Asumimos que quieres agregar los nuevos elementos al final de la tabla
+  radiologia.forEach((cita) => {
+    const row = tablaCitas.insertRow(-1); // -1 agrega al final de la tabla
+    row.innerHTML = `
+        <td class="table-danger">${cita.hora}</td>
+        <td class="table-danger">${cita.especialista}</td>
+        <td class="table-danger">${cita.paciente}</td>
+        <td class="table-danger">${cita.rut}</td>
+        <td class="table-danger">${cita.prevision}</td>
+      `;
+  });
+}
+
+function eliminarUltimo() {
+  console.log(radiologia)
+  radiologia.pop(); // Se utiliza para eliminar el último dato que tenemos en el arreglo
+  console.log(radiologia)
+  // Agregar nuevos elementos al arreglo de traumatología de forma correcta
+
+  // Actualizar la vista
+  const tablaCitas = document.getElementById("tabla-citas-radiologia");
+
+  // Limpiar la tabla antes de volver a llenarla para evitar duplicados
+  tablaCitas.innerHTML = "";
+
+  // Asumimos que quieres agregar los nuevos elementos al final de la tabla
+  radiologia.forEach((cita) => {
+    const row = tablaCitas.insertRow(-1); // -1 agrega al final de la tabla
+    row.innerHTML = `
+        <td class="table-danger">${cita.hora}</td>
+        <td class="table-danger">${cita.especialista}</td>
+        <td class="table-danger">${cita.paciente}</td>
+        <td class="table-danger">${cita.rut}</td>
+        <td class="table-danger">${cita.prevision}</td>
+      `;
+  });
+}
+
+
+
