@@ -92,47 +92,38 @@ function cambiarContenido(requerimiento) {
       break;
     case "Eliminar":
       let tablaHtml2 = `
-      <p>2. Eliminar el primer y último elemento del arreglo de Radiología:</p>
-      <p>Utilizando Shit y Pop</p>
-      <table class="table table-striped-columns">
-        <thead>
-          <tr>
-            <th class="table-dark">Hora</th>
-            <th class="table-dark">Especialista</th>
-            <th class="table-dark">Paciente</th>
-            <th class="table-dark">RUT</th>
-            <th class="table-dark">Previsión</th>
-          </tr>
-        </thead>
-        <tbody id="tabla-citas-radiologia">
-    `;
-
-      // Agregar filas al HTML de la tabla para cada cita en el arreglo
-      traumatologia.forEach((cita) => {
-        tablaHtml2 += `
-        <tr class="table-info">
-          <td class="table-secondary">${cita.hora}</td>
-          <td class="table-secondary">${cita.especialista}</td>
-          <td class="table-secondary">${cita.paciente}</td>
-          <td class="table-secondary">${cita.rut}</td>
-          <td class="table-secondary">${cita.prevision}</td>
+    <p>2. Eliminar el primer y último elemento del arreglo de Radiología:</p>
+    <p>Utilizando Shift y Pop</p>
+    <table class="table table-striped-columns">
+      <thead>
+        <tr>
+          <th class="table-dark">Hora</th>
+          <th class="table-dark">Especialista</th>
+          <th class="table-dark">Paciente</th>
+          <th class="table-dark">RUT</th>
+          <th class="table-dark">Previsión</th>
         </tr>
+      </thead>
+      <tbody id="tabla-citas-radiologia">
       `;
-      });
 
-      // Cerrar las etiquetas de la tabla
+      // Aquí solo debemos generar el esqueleto de la tabla, no llenarla con datos.
       tablaHtml2 += `
-        </tbody>
-      </table>
+      </tbody>
+    </table>
+  `;
 
-    `;
-      // Eliminar  el botón para agregar horas
+      // Botones para eliminar elementos. Nota que ya no llenamos la tabla aquí.
+      tablaHtml2 += `
+    <button onclick="eliminarPrimero()" class="btn btn-primary mb-5">Eliminar Primer Elemento</button>
+    <button onclick="eliminarUltimo()" class="btn btn-secondary mb-5">Eliminar Ultimo Elemento</button>
+  `;
 
-      tablaHtml2 += `<button onclick="eliminarPrimero()" class="btn btn-primary mb-5">Eliminar Primer Elemento</button>
-                      <button onclick="eliminarUltimo()" class="btn btn-secondary mb-5">Eliminar Ultimo Elemento</button>`;
+      // Actualizar el contenido de infoDiv con el HTML de la tabla y los botones
       infoDiv.innerHTML = tablaHtml2;
-      // Actualizar el contenido de infoDiv
 
+      // Llamar a una función para llenar la tabla con los datos actuales
+      llenarTablaRadiologia()
       break;
     case "Listar Dental":
       // Iniciar la variable para construir el HTML
@@ -212,7 +203,6 @@ function getFinalWord(variable) {
 }
 
 // 1. Agregar las siguientes horas al arreglo de Traumatología.
-
 function agregarHoras() {
 
   // Agregar nuevos elementos al arreglo de traumatología de forma correcta
@@ -245,52 +235,32 @@ function agregarHoras() {
 
 // 2. Agregar las siguientes horas al arreglo de Radiologia.
 
-function eliminarPrimero() {
-  radiologia.shift(); // Se utiliza para eliminar el primer dato que tenemos en el arreglo
-
-  // Actualizar la vista
+function llenarTablaRadiologia() {
   const tablaCitas = document.getElementById("tabla-citas-radiologia");
+  tablaCitas.innerHTML = ""; // Asegurarse de limpiar la tabla antes de llenarla
 
-  // Limpiar la tabla antes de volver a llenarla para evitar duplicados
-  tablaCitas.innerHTML = "";
-
-  // Asumimos que quieres agregar los nuevos elementos al final de la tabla
   radiologia.forEach((cita) => {
-    const row = tablaCitas.insertRow(-1); // -1 agrega al final de la tabla
+    const row = tablaCitas.insertRow(-1);
     row.innerHTML = `
-        <td class="table-danger">${cita.hora}</td>
-        <td class="table-danger">${cita.especialista}</td>
-        <td class="table-danger">${cita.paciente}</td>
-        <td class="table-danger">${cita.rut}</td>
-        <td class="table-danger">${cita.prevision}</td>
-      `;
+      <td class="table-danger">${cita.hora}</td>
+      <td class="table-danger">${cita.especialista}</td>
+      <td class="table-danger">${cita.paciente}</td>
+      <td class="table-danger">${cita.rut}</td>
+      <td class="table-danger">${cita.prevision}</td>
+    `;
   });
+}
+
+function eliminarPrimero() {
+  radiologia.shift();
+  llenarTablaRadiologia();
 }
 
 function eliminarUltimo() {
-  console.log(radiologia)
-  radiologia.pop(); // Se utiliza para eliminar el último dato que tenemos en el arreglo
-  console.log(radiologia)
-  // Agregar nuevos elementos al arreglo de traumatología de forma correcta
-
-  // Actualizar la vista
-  const tablaCitas = document.getElementById("tabla-citas-radiologia");
-
-  // Limpiar la tabla antes de volver a llenarla para evitar duplicados
-  tablaCitas.innerHTML = "";
-
-  // Asumimos que quieres agregar los nuevos elementos al final de la tabla
-  radiologia.forEach((cita) => {
-    const row = tablaCitas.insertRow(-1); // -1 agrega al final de la tabla
-    row.innerHTML = `
-        <td class="table-danger">${cita.hora}</td>
-        <td class="table-danger">${cita.especialista}</td>
-        <td class="table-danger">${cita.paciente}</td>
-        <td class="table-danger">${cita.rut}</td>
-        <td class="table-danger">${cita.prevision}</td>
-      `;
-  });
+  radiologia.pop();
+  llenarTablaRadiologia();
 }
+
 
 
 
